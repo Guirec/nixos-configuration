@@ -89,18 +89,23 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    php
-    docker-compose
-    unstable.gh
-    unstable.php74.packages.composer
+  environment.systemPackages = with pkgs;
+    let
+      php = pkgs.php.buildEnv { extraConfig = "memory_limit = 512M"; };
+    in [
+      wget
+      git
+      gnumake
+      php
+      docker-compose
+      yarn
+      unstable.nodejs
+      unstable.fish
+      unstable.gh
+      unstable.php74.packages.composer
 
-    (callPackage ./symfony-cli.nix {})
-  ];
-
-  programs.fish.enable = true;
+      (callPackage ./symfony-cli.nix {})
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
