@@ -102,8 +102,7 @@ in {
       nodejs
       unstable.gh
       unstable.php74.packages.composer
-
-      (callPackage ./symfony-cli.nix {})
+      unstable.symfony-cli
     ];
   
   programs.fish.enable = true;
