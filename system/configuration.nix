@@ -99,7 +99,7 @@ in {
       php
       docker-compose
       yarn
-      unstable.nodejs
+      nodejs
       unstable.gh
       unstable.php74.packages.composer
 
